@@ -1,14 +1,13 @@
-import mongoose from 'mongoose'
-import 'dotenv/config'
+import mongoose from 'mongoose';
+import 'dotenv/config';
 
 export const connectDB = async () => {
-    return await mongoose.connect(process.env.MONGODB_URI, {
-       
+  return await mongoose
+    .connect(process.env.MONGODB_URI, {})
+    .then(() => {
+      console.log('db connected');
     })
-        .then(() => {
-            console.log('db connected');
-        })
-        .catch((error) => {
-            console.error('db not connected', error);
-        });
+    .catch((error) => {
+      console.error('db not connected', error);
+    });
 };
